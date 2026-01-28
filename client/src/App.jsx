@@ -1607,9 +1607,23 @@ export default function App() {
             >
               📊 Progress
             </button>
+            {page === 'learn' && step === 'select' && (
+              <button
+                type="button"
+                className="navBtn ghost"
+                onClick={() => {
+                  const el = document.getElementById('filters');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+              >
+                🧰 Filters
+              </button>
+            )}
             <div className="navSpacer" />
-            <span className="langPill">{spokenLanguage}</span>
-            <span className="langPill alt">{spokenLanguageSecondary}</span>
+            <div className="langGroup">
+              <span className="langPill">{spokenLanguage}</span>
+              <span className="langPill alt">{spokenLanguageSecondary}</span>
+            </div>
             <button
               type="button"
               className="navBtn logout"
@@ -1880,7 +1894,7 @@ export default function App() {
 
               <div className="catalogBody">
                 <aside className="catalogSidebar">
-                  <div className="filterCard filtersCard">
+                  <div id="filters" className="filterCard filtersCard">
                     <div className="filterTitle">Filters</div>
                     <div className="filterRow">
                       <div className="filterLabel">Section</div>
@@ -1925,17 +1939,19 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="filterCard">
-                    <div className="filterTitle">Checkout</div>
-                    <div className="filterHint">Selected topic</div>
-                    <div className="selectedTopic">{topic || 'None'}</div>
-                    <button disabled={busy || !topic.trim()} onClick={startLearning}>
-                      {busy ? 'Loading...' : '🚀 Start Learning'}
-                    </button>
-                    <div className="filterHint" style={{ marginTop: 10 }}>
-                      Your progress is synced automatically.
+                  {topic?.trim() && (
+                    <div className="filterCard checkoutCard">
+                      <div className="filterTitle">Checkout</div>
+                      <div className="filterHint">Selected topic</div>
+                      <div className="selectedTopic">{topic}</div>
+                      <button disabled={busy} onClick={startLearning}>
+                        {busy ? 'Loading...' : '🚀 Start Learning'}
+                      </button>
+                      <div className="filterHint" style={{ marginTop: 10 }}>
+                        Your progress is synced automatically.
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </aside>
 
                 <main className="catalogMain">

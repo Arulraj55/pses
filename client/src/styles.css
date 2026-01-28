@@ -237,6 +237,12 @@ body {
   background: linear-gradient(135deg, rgba(156, 107, 255, 0.18), rgba(100, 216, 245, 0.15));
 }
 
+.langGroup {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .sectionPage {
   position: relative;
   left: 50%;
@@ -834,6 +840,20 @@ body {
   }
 }
 
+@media (max-width: 760px) {
+  .studyFlowBoard {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(180px, 1fr);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+  }
+
+  .studyStepCard {
+    scroll-snap-align: start;
+  }
+}
+
 
 .webVideos {
   margin-top: 24px;
@@ -932,6 +952,19 @@ body {
   }
   .catalogSidebar {
     grid-template-columns: 1fr;
+  }
+  .catalogHeroActions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .catalogSearch {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .catalogSearch button {
+    width: 100%;
   }
 }
 
@@ -1867,6 +1900,17 @@ small.muted {
     gap: 10px;
   }
 
+  .langGroup {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .navBtn.logout {
+    order: 4;
+    width: 100%;
+  }
+
   .navSpacer {
     display: none;
   }
@@ -1908,6 +1952,15 @@ small.muted {
 
   .sectionGrid {
     gap: 14px;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 1fr);
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .sectionCard {
+    scroll-snap-align: start;
   }
 
   .cardTitle {
@@ -1966,6 +2019,16 @@ small.muted {
 
   .sectionBody button {
     width: 100%;
+  }
+
+  .authCardPro {
+    max-width: 100%;
+    margin: 24px auto;
+    padding: 22px 16px;
+  }
+
+  .authSection {
+    padding: 16px;
   }
 }
 
