@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# build outputs
+client/dist/
+server/dist/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# misc
+.DS_Store

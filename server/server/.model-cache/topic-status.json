@@ -1,0 +1,16 @@
+{
+  "topics": {
+    "arrays": {
+      "avgTopicScore": 0.55,
+      "incorrectAnswerFrequency": 0.4,
+      "rewatchFrequency": 2,
+      "samples": 1
+    },
+    "Reactive Programming (Project Reactor)": {
+      "avgTopicScore": 0.3,
+      "incorrectAnswerFrequency": 0.7,
+      "rewatchFrequency": 0,
+      "samples": 1
+    }
+  }
+}

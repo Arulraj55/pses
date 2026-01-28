@@ -1,0 +1,149 @@
+{
+  "sessions": [
+    {
+      "id": "sess_mkwxlv72_glvsmp",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Reactive Programming (Project Reactor)",
+      "language": "Java",
+      "videoId": "eHmM0EOmAS8",
+      "replayCount": 0,
+      "videoStartedAt": "2026-01-27T18:30:21.995Z",
+      "createdAt": "2026-01-27T18:30:21.998Z",
+      "videoCompletedAt": "2026-01-27T18:33:04.523Z",
+      "updatedAt": "2026-01-27T18:33:04.531Z"
+    },
+    {
+      "id": "sess_mkwyuqeg_gs9bny",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Modules and Large-Scale Builds",
+      "language": "Java",
+      "videoId": "ejofP2VKu-4",
+      "replayCount": 0,
+      "videoStartedAt": "2026-01-27T19:05:15.302Z",
+      "createdAt": "2026-01-27T19:05:15.305Z"
+    },
+    {
+      "id": "sess_mkwzksdv_j3d3am",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Classes, Objects, and Methods",
+      "language": "Java",
+      "videoId": "Znmz_WxMxp4",
+      "replayCount": 0,
+      "videoStartedAt": "2026-01-27T19:25:30.930Z",
+      "createdAt": "2026-01-27T19:25:30.931Z"
+    },
+    {
+      "id": "sess_mkwzypr2_ahr4mv",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Collections Framework",
+      "language": "Java",
+      "videoId": "viTHc_4XfCA",
+      "replayCount": 0,
+      "videoStartedAt": "2026-01-27T19:36:20.699Z",
+      "createdAt": "2026-01-27T19:36:20.702Z"
+    },
+    {
+      "id": "sess_mkx05fyy_4f0wsc",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Classes, Objects, and Methods",
+      "language": "Java",
+      "videoId": "Znmz_WxMxp4",
+      "replayCount": 0,
+      "videoStartedAt": "2026-01-27T19:41:34.617Z",
+      "createdAt": "2026-01-27T19:41:34.618Z"
+    },
+    {
+      "id": "sess_mkx06820_cfilu9",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Exceptions and Error Handling",
+      "language": "Java",
+      "videoId": "1XAfapkBQjk",
+      "replayCount": 0,
+      "videoStartedAt": "2026-01-27T19:42:11.015Z",
+      "createdAt": "2026-01-27T19:42:11.016Z"
+    },
+    {
+      "id": "sess_mkx07dgt_vhji8z",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Java Basics & Syntax",
+      "language": "Java",
+      "videoId": "RRubcjpTkks",
+      "replayCount": 0,
+      "videoStartedAt": "2026-01-27T19:43:04.683Z",
+      "createdAt": "2026-01-27T19:43:04.685Z",
+      "videoCompletedAt": "2026-01-27T19:43:07.058Z",
+      "updatedAt": "2026-01-27T19:43:07.059Z"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "attempt_mkwxrrbn_h13671",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Reactive Programming (Project Reactor)",
+      "language": "Java",
+      "score": 0.3,
+      "timePerQuestionSec": [
+        65.063,
+        2.166,
+        2.16,
+        1.889,
+        2.419,
+        2.178,
+        2.544,
+        2.063,
+        2.178,
+        2.428
+      ],
+      "perceivedDifficulty": 5,
+      "videoReplays": 0,
+      "weakConcepts": [
+        "Core Abstractions (Flux vs Mono)",
+        "Publisher-Subscriber Model",
+        "Operator Chaining and Immutability",
+        "Non-blocking I/O and Execution"
+      ],
+      "predictedLevel": "Beginner",
+      "confidence": 0.45,
+      "createdAt": "2026-01-27T18:34:56.915Z"
+    },
+    {
+      "id": "attempt_mkx08dp5_j0g9ol",
+      "uid": "Q0pKQKWPr8QIDMDfaAMdcnLAb2y2",
+      "section": "LANGUAGE",
+      "topic": "Java Basics & Syntax",
+      "language": "Java",
+      "score": 0.3,
+      "timePerQuestionSec": [
+        2.928,
+        2.21,
+        2.317,
+        2.133,
+        2.198,
+        1.881,
+        2.166,
+        2.591,
+        2.237,
+        1.963
+      ],
+      "perceivedDifficulty": 1,
+      "videoReplays": 0,
+      "weakConcepts": [
+        "Type Compatibility & Casting",
+        "Operator Precedence",
+        "Conditional Statements (if-else if-else)",
+        "For Loop Structure"
+      ],
+      "predictedLevel": "Beginner",
+      "confidence": 0.45,
+      "createdAt": "2026-01-27T19:43:51.641Z"
+    }
+  ]
+}

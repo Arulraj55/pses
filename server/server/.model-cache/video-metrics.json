@@ -1,0 +1,25 @@
+{
+  "videos": {
+    "intro-dsa": {
+      "avgPostQuiz": 0.71,
+      "completionRate": 0.82,
+      "rewatchRate": 1.2,
+      "feedback": 4.4,
+      "samples": 1
+    },
+    "lCTUOERTXyw": {
+      "avgPostQuiz": 0.3,
+      "completionRate": 1,
+      "rewatchRate": 0.1,
+      "feedback": 5,
+      "samples": 1
+    },
+    "RRubcjpTkks": {
+      "avgPostQuiz": 0.3,
+      "completionRate": 1,
+      "rewatchRate": 0.1,
+      "feedback": 1,
+      "samples": 1
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "users": {
+    "unknown_user": {
+      "quizScore": 0.3,
+      "avgTimePerQuestion": 2.2624000000000004,
+      "videoReplayCount": 0,
+      "topicDifficultyRating": 1,
+      "predictedLevel": "Beginner",
+      "confidence": 0.45,
+      "updatedAt": 1769543031560
+    }
+  }
+}
