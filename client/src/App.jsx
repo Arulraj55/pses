@@ -1718,59 +1718,6 @@ export default function App() {
               </div>
 
               <div className="sectionGrid">
-                {firebaseEnabled && !user.isGuest && emailVerified && !profile?.preferredLanguage && (
-                  <div className="card" style={{ gridColumn: '1 / -1', marginBottom: 6 }}>
-                    <div className="cardHeader">
-                      <div>
-                        <h2 className="cardTitle">Set your preferred language</h2>
-                        <p className="cardSubtitle">Required to personalize Language Concepts</p>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="formGroup">
-                        <label>Preferred language</label>
-                        <select
-                          value={language}
-                          onChange={(e) => setLanguage(e.target.value)}
-                        >
-                          {LANGUAGE_OPTIONS.map((l) => (
-                            <option key={l} value={l}>{l}</option>
-                          ))}
-                        </select>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'end' }}>
-                        <button
-                          type="button"
-                          disabled={busy}
-                          onClick={async () => {
-                            setError('');
-                            try {
-                              setBusy(true);
-                              const token = await user.getIdToken();
-                              const fallbackUsername = profile?.username
-                                || (typeof window !== 'undefined' ? window.localStorage.getItem('psesUsername') : '')
-                                || (user?.email ? user.email.split('@')[0] : 'pses-user');
-                              await saveProfile(token, {
-                                preferredLanguage: language,
-                                username: fallbackUsername,
-                                email: user.email || null
-                              });
-                              setProfile({ ...(profile || {}), preferredLanguage: language, username: fallbackUsername });
-                            } catch (e) {
-                              setError(e?.message || 'Failed to save preferred language');
-                            } finally {
-                              setBusy(false);
-                            }
-                          }}
-                          style={{ width: 'auto' }}
-                        >
-                          Save
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
                 <div
                   className="sectionCard"
                   onClick={() => {
