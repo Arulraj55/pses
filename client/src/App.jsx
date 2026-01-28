@@ -507,7 +507,6 @@ function AuthPanel({ onAuthed, onProfileChanged, spokenLanguage, spokenLanguageS
 
     await registerUsername(token, pending.username, emailForProfile);
     setPendingSignup(null);
-    setEmailVerified(true);
     setPage('sections');
     setAuthScreen('login');
   }
@@ -1009,7 +1008,6 @@ function AuthPanel({ onAuthed, onProfileChanged, spokenLanguage, spokenLanguageS
         </div>
       )}
 
-      {cloudWarning && <div className="warningBanner">{cloudWarning}</div>}
       {error && <div className="error">{error}</div>}
     </div>
   );
