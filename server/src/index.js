@@ -15,9 +15,25 @@ import { connectMongo } from './mongo.js';
 
 const app = express();
 
+const allowedOrigins = String(env.corsOrigin || '')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
+
 app.use(
   cors({
-    origin: env.corsOrigin,
+    origin: (origin, callback) => {
+      // Non-browser requests (no Origin header) should be allowed.
+      if (!origin) return callback(null, true);
+
+      // Allow all if explicitly configured.
+      if (allowedOrigins.includes('*')) return callback(null, true);
+
+      // Allow exact matches.
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+
+      return callback(new Error(`CORS blocked for origin: ${origin}`), false);
+    },
     credentials: false
   })
 );
