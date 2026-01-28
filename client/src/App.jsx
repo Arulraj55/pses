@@ -507,6 +507,8 @@ function AuthPanel({ onAuthed, onProfileChanged, spokenLanguage, spokenLanguageS
 
     await registerUsername(token, pending.username, emailForProfile);
     setPendingSignup(null);
+    // Immediately update profile with preferred language so UI shows correct value after signup
+    setProfile({ ...(profile || {}), preferredLanguage: pending.preferredLanguage || preferredLanguage, username: pending.username });
     setPage('sections');
     setAuthScreen('login');
   }
