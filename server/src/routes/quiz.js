@@ -47,19 +47,77 @@ Rules:
 }
 
 function extractJson(text) {
-  const t = String(text || '').trim();
+  const t = String(text || '').replace(/^\uFEFF/, '').trim();
   if (!t) return '';
 
   // Prefer fenced JSON blocks.
   const fence = t.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
-  if (fence?.[1]) return fence[1].trim();
+  const unfenced = fence?.[1] ? fence[1].trim() : t;
+  if (!unfenced) return '';
 
-  // Otherwise, grab the first JSON-looking object.
-  const first = t.indexOf('{');
-  const last = t.lastIndexOf('}');
-  if (first !== -1 && last !== -1 && last > first) return t.slice(first, last + 1).trim();
+  // If it already looks like JSON, keep it.
+  const head = unfenced.trimStart();
+  if (head.startsWith('{') || head.startsWith('[')) return head;
 
-  return t;
+  // Otherwise, extract the first complete JSON object/array (handles leading text).
+  const startObj = unfenced.indexOf('{');
+  const startArr = unfenced.indexOf('[');
+  let start = -1;
+  let open = '';
+  let close = '';
+  if (startObj !== -1 && (startArr === -1 || startObj < startArr)) {
+    start = startObj;
+    open = '{';
+    close = '}';
+  } else if (startArr !== -1) {
+    start = startArr;
+    open = '[';
+    close = ']';
+  }
+  if (start === -1) return head;
+
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  for (let i = start; i < unfenced.length; i += 1) {
+    const ch = unfenced[i];
+    if (inString) {
+      if (escape) {
+        escape = false;
+      } else if (ch === '\\') {
+        escape = true;
+      } else if (ch === '"') {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (ch === '"') {
+      inString = true;
+      continue;
+    }
+
+    if (ch === open) depth += 1;
+    if (ch === close) depth -= 1;
+    if (depth === 0 && i > start) return unfenced.slice(start, i + 1).trim();
+  }
+
+  return unfenced.slice(start).trim();
+}
+
+function truncate(text, max = 2000) {
+  const t = String(text ?? '');
+  if (t.length <= max) return t;
+  return `${t.slice(0, max)}…(truncated ${t.length - max} chars)`;
+}
+
+function candidateText(data) {
+  const parts = data?.candidates?.[0]?.content?.parts;
+  if (!Array.isArray(parts)) return '';
+  return parts
+    .map((p) => (typeof p?.text === 'string' ? p.text : ''))
+    .filter(Boolean)
+    .join('\n');
 }
 
 async function readFirestoreCache(key) {
@@ -98,7 +156,11 @@ quizRouter.post('/generate', express.json(), async (req, res, next) => {
 
       const body = {
         contents: [{ role: 'user', parts: [{ text: geminiPrompt({ topic, language }) }] }],
-        generationConfig: { temperature: 0.4 }
+        generationConfig: {
+          temperature: 0.4,
+          // Strongly encourages a JSON-only response.
+          responseMimeType: 'application/json'
+        }
       };
 
       return await fetchJson(url.toString(), {
@@ -127,15 +189,16 @@ quizRouter.post('/generate', express.json(), async (req, res, next) => {
       data = await callGemini(fallback);
     }
 
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+    const text = candidateText(data);
     let quiz;
     try {
       quiz = JSON.parse(extractJson(text));
     } catch (err) {
+      const extracted = extractJson(text);
       return res.status(502).json({
         message: 'Gemini returned non-JSON output',
-        raw: text,
-        extracted: extractJson(text),
+        raw: truncate(text),
+        extracted: truncate(extracted),
         parseError: err?.message ?? String(err)
       });
     }

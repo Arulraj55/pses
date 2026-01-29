@@ -1369,7 +1369,7 @@ export default function App() {
     return { score, correct, total, weakConcepts };
   }, [quiz, answers]);
 
-  async function startLearning() {
+  async function startLearning(selectedTopic = topic) {
     setError('');
     setBusy(true);
     setResult(null);
@@ -1383,15 +1383,16 @@ export default function App() {
     setIdx(0);
     setTimePerQuestionSec([]);
     setQuestionStartAt(null);
-    setDifficulty(difficultyValue(topic));
+    setTopic(selectedTopic);
+    setDifficulty(difficultyValue(selectedTopic));
 
     try {
       if (firebaseEnabled && Boolean(user?.email) && !emailVerified) {
         throw new Error('Please verify your email before learning.');
       }
-      track('topic_selected', { topic, language });
+      track('topic_selected', { topic: selectedTopic, language });
 
-      const vid = await searchVideo(topic, language, {
+      const vid = await searchVideo(selectedTopic, language, {
         max: 6,
         webMax: 0,
         spoken: spokenLanguage,
@@ -1939,19 +1940,6 @@ export default function App() {
                     </div>
                   </div>
 
-                  {topic?.trim() && (
-                    <div className="filterCard checkoutCard">
-                      <div className="filterTitle">Checkout</div>
-                      <div className="filterHint">Selected topic</div>
-                      <div className="selectedTopic">{topic}</div>
-                      <button disabled={busy} onClick={startLearning}>
-                        {busy ? 'Loading...' : '🚀 Start Learning'}
-                      </button>
-                      <div className="filterHint" style={{ marginTop: 10 }}>
-                        Your progress is synced automatically.
-                      </div>
-                    </div>
-                  )}
                 </aside>
 
                 <main className="catalogMain">
@@ -1996,7 +1984,7 @@ export default function App() {
                             key={title}
                             type="button"
                             className={`productCard ${topic === title ? 'active' : ''}`}
-                            onClick={() => setTopic(title)}
+                            onClick={() => startLearning(title)}
                           >
                             <div className="stepTag">Step {order || idx + 1}</div>
                             <div className="productTopic">{title}</div>
