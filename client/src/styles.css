@@ -1952,15 +1952,7 @@ small.muted {
 
   .sectionGrid {
     gap: 14px;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(260px, 1fr);
-    overflow-x: auto;
-    padding-bottom: 6px;
-    scroll-snap-type: x mandatory;
-  }
-
-  .sectionCard {
-    scroll-snap-align: start;
+    grid-template-columns: 1fr;
   }
 
   .cardTitle {
@@ -1996,12 +1988,21 @@ small.muted {
   }
 
   .nav {
-    gap: 6px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .navBtn {
     font-size: 12px;
-    padding: 8px 10px;
+    padding: 10px 12px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .langGroup {
+    width: 100%;
+    justify-content: center;
   }
 
   .langPill {
