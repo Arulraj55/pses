@@ -156,11 +156,7 @@ quizRouter.post('/generate', express.json(), async (req, res, next) => {
 
       const body = {
         contents: [{ role: 'user', parts: [{ text: geminiPrompt({ topic, language }) }] }],
-        generationConfig: {
-          temperature: 0.4,
-          // Strongly encourages a JSON-only response.
-          responseMimeType: 'application/json'
-        }
+        generationConfig: { temperature: 0.4 }
       };
 
       return await fetchJson(url.toString(), {
