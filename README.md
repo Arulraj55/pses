@@ -28,13 +28,12 @@ PSES is a single-flow learning app:
 ## Getting Started (Local)
 
 ### 1) Configure environment variables
-Create a root `.env` from `.env.example`:
+Set the required environment variables (API keys, URLs) in your OS/shell.
 
-```bash
-copy .env.example .env
-```
-
-Fill in your API keys and local URLs.
+Notes:
+- This repo does not include `.env.example` files anymore.
+- For local development you can still create your own `.env` file (do NOT commit it) if you prefer using `dotenv`.
+- On Render, configure all variables in **Render → Environment** (recommended).
 
 Security note:
 - Never commit `.env` (this repo already ignores it)
