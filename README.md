@@ -92,4 +92,3 @@ Open: `http://localhost:5173`
 
 ## Contributing
 Issues and PRs are welcome. Please avoid committing secrets, large models, or build outputs.
-

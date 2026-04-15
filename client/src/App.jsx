@@ -212,6 +212,10 @@ const LANGUAGE_CONCEPT_TOPICS = {
   ]
 };
 
+const FOOTER_LINK = 'https://history-nnvl.onrender.com';
+const FOOTER_LABEL = 'History Animated Videos';
+const FOOTER_TEXT = 'Explore class 6 to 12 history lessons through simple animated videos and clear chapter-wise learning.';
+
 const DSA_STUDY_FLOW = [];
 
 const LANGUAGE_STUDY_FLOW_TEMPLATE = [];
@@ -2289,6 +2293,18 @@ export default function App() {
           )}
         </>
       )}
+
+      <footer className="pageFooter">
+        <p>
+          {FOOTER_TEXT}
+        </p>
+        <p className="pageFooterLinkRow">
+          <a href={FOOTER_LINK} target="_blank" rel="noreferrer">
+            <span aria-hidden="true"></span>
+            <span>{FOOTER_LABEL}</span>
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }
